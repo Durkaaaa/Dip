@@ -1,0 +1,113 @@
+﻿<Window x:Class="Diploma.View.EditTicketWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diploma.View"
+        mc:Ignorable="d"
+        Title="Редактирование записи" 
+        Height="250" 
+        Width="250"
+        x:Name="EditTicketWnd">
+
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="AliceBlue"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="Background" Value="AliceBlue"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#CEFFF9"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.25*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Width="150">
+
+            <TextBlock Text="Дата приёма"/>
+            <DatePicker x:Name="StartOfReceptionBlock" 
+                        SelectedDate="{Binding Date}" 
+                        IsDropDownOpen="True" 
+                        SelectedDateFormat="Short" 
+                        BorderBrush="Black"/>
+
+            <TextBlock Text="Время приёма"/>
+            <ComboBox ItemsSource="{Binding AllReceptionHour}"
+                      SelectedItem="{Binding SelectedReceptionHour}"
+                      DisplayMemberPath="StartOfReception"
+                      SelectedIndex="{Binding IndexReceptionHour}"
+                      ItemStringFormat="{}{0:HH:mm}">
+                <ComboBox.Resources>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Border BorderBrush="Black"
+                                            BorderThickness="1">
+                                        <Grid Background="{TemplateBinding Background}">
+                                            <StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="С: "/>
+
+                                                    <TextBlock Text="{Binding StartOfReception, StringFormat=HH:mm}"
+                                                           FontSize="12"/>
+                                                </StackPanel>
+
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="До: "/>
+
+                                                    <TextBlock Text="{Binding EndOfReception, StringFormat=HH:mm}"
+                                                           FontSize="12"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#CEFFF9"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ComboBox.Resources>
+            </ComboBox>
+
+            <TextBlock Text="Специализация"/>
+            <ComboBox ItemsSource="{Binding AllSpeciality}"
+                      SelectedItem="{Binding SelectedSpeciality}"
+                      DisplayMemberPath="Titl"
+                      SelectedIndex="{Binding IndexSpeciality}"/>
+        </StackPanel>
+
+        <Button Content="Далее"
+                Grid.Row="1"
+                Command="{Binding EditTicketDateTime}"
+                CommandParameter="{Binding ElementName=EditTicketWnd}"/>
+    </Grid>
+</Window>

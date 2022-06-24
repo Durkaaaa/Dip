@@ -1,0 +1,437 @@
+﻿<Page x:Class="Diploma.View.MedicalCardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Diploma.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MedicalCardPage"
+      x:Name="MedicalCardPg">
+
+    <Page.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="AliceBlue"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="Height" Value="25"/>
+        </Style>
+        
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="Background" Value="AliceBlue"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#CEFFF9"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="LightBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.15*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.05*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.ColumnSpan="5"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <TextBlock Text="Медицинская карта"
+                       FontWeight="Bold"
+                       FontSize="20"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1"
+              Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.5*"/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0"
+                        BorderBrush="Black"
+                        BorderThickness="1"
+                        Background="White">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="Пациент"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontSize="20"
+                               FontWeight="Bold"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Фамилия:"
+                                       Grid.Row="0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding PatientSurname}"
+                                       x:Name="PatientSurnameBlock"
+                                       Grid.Column="1"
+                                       Grid.Row="0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="15"/>
+
+                            <TextBlock Text="Имя:"
+                                       Grid.Row="1"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding PatientName}"
+                                       x:Name="PatientNameBlock"
+                                       Grid.Column="1"
+                                       Grid.Row="1"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="15"/>
+
+                            <TextBlock Text="Отчество:"
+                                       Grid.Row="2"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding PatientLastname}"
+                                       x:Name="PatientLastnameBlock"
+                                       Grid.Column="1"
+                                       Grid.Row="2"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="15"/>
+
+                            <TextBlock Text="Дата рождения:"
+                                       Grid.Row="3"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding PatientDateOfBirth}"
+                                       x:Name="PatientDateOfBirthBlock"
+                                       Grid.Column="1"
+                                       Grid.Row="3"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="15"/>
+
+                            <TextBlock Text="Пол:"
+                                       Grid.Row="4"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding PatientGender}"
+                                       x:Name="PatientGenderBlock"
+                                       Grid.Column="1"
+                                       Grid.Row="4"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="15"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="2"
+                        BorderBrush="Black"
+                        BorderThickness="1"
+                        Background="White">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="Врач"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontSize="20"
+                               FontWeight="Bold"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Фамилия:"
+                                       Grid.Row="0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding DoctorSurname}"
+                                       x:Name="DoctorSurnameBlock"
+                                       Grid.Column="1"
+                                       Grid.Row="0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="15"/>
+
+                            <TextBlock Text="Имя:"
+                                       Grid.Row="1"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding DoctorName}"
+                                       x:Name="DoctorNameBlock"
+                                       Grid.Column="1"
+                                       Grid.Row="1"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="15"/>
+
+                            <TextBlock Text="Отчество:"
+                                       Grid.Row="2"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding DoctorLastname}"
+                                       x:Name="DoctorLastnameBlock"
+                                       Grid.Column="1"
+                                       Grid.Row="2"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="15"/>
+
+                            <TextBlock Text="Специальность:"
+                                       Grid.Row="3"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding DoctorSpeciality}"
+                                       x:Name="DoctorSpecialityBlock"
+                                       Grid.Column="1"
+                                       Grid.Row="3"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="15"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2"
+              Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.9*"/>
+                    <ColumnDefinition Width="0.03*"/>
+                    <ColumnDefinition Width="0.75*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Начало лечения:"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           FontWeight="Bold"/>
+
+                <TextBlock Text="{Binding StartOfTreatment}"
+                           x:Name="StartOfTreatmentBlock"
+                           Grid.Column="2"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"/>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.7*"/>
+                    <ColumnDefinition Width="0.03*"/>
+                    <ColumnDefinition Width="0.75*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Конец лечения:"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           FontWeight="Bold"/>
+                <TextBlock Text="{Binding EndOfTreatment}"
+                           x:Name="EndOfTreatmentBlock"
+                           Grid.Column="2"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1"
+              Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.05*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.05*"/>
+                <RowDefinition Height="0.1*"/>
+            </Grid.RowDefinitions>
+
+            <Border BorderBrush="Black"
+                    BorderThickness="1"
+                    Background="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Диагноз:"
+                               Grid.Row="0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontWeight="Bold"/>
+                    <TextBlock Text="{Binding Diagnosis}"
+                               x:Name="DiagnosisBlock"
+                               Grid.Row="1"
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"
+                               FontSize="15"/>
+                </Grid>
+            </Border>
+
+            <ListView x:Name="MedicineBlock"
+                      Grid.Row="2"
+                      BorderBrush="Black"
+                      BorderThickness="1"
+                      ItemsSource="{Binding AllMedicine}"
+                      SelectedItem="{Binding SelectedMedicine}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Titl}"
+                                        Width="160">
+                            Лекарства
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <TextBox Text="{Binding AEMedicine}" 
+                     x:Name="AEMedicineBlock"
+                     Grid.Row="4"
+                     BorderBrush="Black"
+                     VerticalAlignment="Center"/>
+
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="6"
+                        HorizontalAlignment="Center">
+
+                <Button Content="+"
+                        Width="40"
+                        Height="Auto"
+                        Margin="5,0,5,0"
+                        FontSize="10"
+                        Command="{Binding AddNewMedicine}"
+                        CommandParameter="{Binding ElementName=MedicalCardPg}"/>
+
+                <Button Content="-"
+                        Width="40"
+                        Height="Auto"
+                        Margin="5,0,5,0"
+                        FontSize="10"
+                        Command="{Binding DeleteMedicine}"
+                        CommandParameter="{Binding ElementName=MedicalCardPg}"/>
+
+                <Button Content="Edit"
+                        Width="40"
+                        Height="Auto"
+                        Margin="5,0,5,0"
+                        FontSize="10"
+                        Command="{Binding EditMedicine}"
+                        CommandParameter="{Binding ElementName=MedicalCardPg}"/>
+            </StackPanel>
+        </Grid>
+
+
+        <Grid Grid.Row="3"
+              Grid.ColumnSpan="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Content="&lt;-"
+                    Height="30"
+                    Width="50"
+                    Command="{Binding OpenPreviousMedicalCard}"/>
+
+            <StackPanel Grid.Column="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+
+                <Button Content="Добавить"
+                        Height="Auto"
+                        Width="120"
+                        Command="{Binding AddNewMedicalRecord}"/>
+
+                <Button Content="Удалить"
+                        Height="Auto"
+                        Width="120"
+                        Command="{Binding DeleteMedicalRecord}"/>
+
+                <Button Content="Редактировать"
+                        Height="Auto"
+                        Width="120"
+                        Command="{Binding EditMedicalRecord}"/>
+            </StackPanel>
+
+            <Button Content="-&gt;" 
+                    Grid.Column="2"
+                    Height="30"
+                    Width="50"
+                    Command="{Binding OpenNextMedicalCard}"/>
+        </Grid>
+    </Grid>
+</Page>

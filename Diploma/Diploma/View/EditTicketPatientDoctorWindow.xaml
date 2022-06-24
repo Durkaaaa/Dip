@@ -1,0 +1,145 @@
+﻿<Window x:Class="Diploma.View.EditTicketPatientDoctorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diploma.View"
+        mc:Ignorable="d"
+        Title="Редактирование записи" 
+        Height="250"
+        Width="250"
+        x:Name="EditTicketPatientDoctorWnd">
+
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="AliceBlue"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="Background" Value="AliceBlue"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#CEFFF9"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.25*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Width="150">
+
+            <TextBlock Text="Пациент"/>
+            <ComboBox ItemsSource="{Binding AllPatient}"
+                      DisplayMemberPath="Surname"
+                      SelectedItem="{Binding SelectedPatient}"
+                      SelectedIndex="{Binding IndexPatient}">
+                <ComboBox.Resources>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Border BorderBrush="Black"
+                                            BorderThickness="1">
+                                        <Grid Background="{TemplateBinding Background}">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding Surname}"
+                                                           FontSize="12"/>
+
+                                                <TextBlock Text="{Binding Name}"
+                                                           FontSize="12"/>
+
+                                                <TextBlock Text="{Binding Lastname}"
+                                                           FontSize="12"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#CEFFF9"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ComboBox.Resources>
+            </ComboBox>
+
+            <TextBlock Text="Врач"/>
+            <ComboBox ItemsSource="{Binding AllDoctor}"
+                      DisplayMemberPath="Surname"
+                      SelectedItem="{Binding SelectedDoctor}"
+                      SelectedIndex="{Binding IndexDoctor}">
+                <ComboBox.Resources>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Border BorderBrush="Black"
+                                            BorderThickness="1">
+                                        <Grid Background="{TemplateBinding Background}">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding Surname}"
+                                                           FontSize="12"/>
+
+                                                <TextBlock Text="{Binding Name}"
+                                                           FontSize="12"/>
+
+                                                <TextBlock Text="{Binding Lastname}"
+                                                           FontSize="12"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#CEFFF9"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ComboBox.Resources>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+
+            <Button Content="Назад"
+                    Width="100"
+                    Height="35"
+                    Command="{Binding BackPage}"
+                    CommandParameter="{Binding ElementName=EditTicketPatientDoctorWnd}"/>
+
+            <Button Content="Изменить"
+                    Width="100"
+                    Height="35"
+                    Command="{Binding EditTicketPatientDoctor}"
+                    CommandParameter="{Binding ElementName=EditTicketPatientDoctorWnd}"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,117 @@
+﻿<Window x:Class="Diploma.View.AddNewPatientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diploma.View"
+        mc:Ignorable="d"
+        Title="Добавление пациента" 
+        Height="600" 
+        Width="250"
+        x:Name="AddNewPatientWnd">
+
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="AliceBlue"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="Height" Value="25"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="Background" Value="AliceBlue"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#CEFFF9"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.15*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="150">
+            <TextBlock Text="Фамилия"/>
+            <TextBox x:Name="SurnameBlock"
+                     Text="{Binding Surname}"
+                     BorderBrush="Black"
+                     VerticalAlignment="Center"/>
+
+            <TextBlock Text="Имя"/>
+            <TextBox x:Name="NameBlock" 
+                     Text="{Binding Name}"
+                     BorderBrush="Black"
+                     VerticalAlignment="Center"/>
+
+            <TextBlock Text="Отчество"/>
+            <TextBox x:Name="LastnameBlock"
+                     Text="{Binding Lastname}"
+                     BorderBrush="Black"
+                     VerticalAlignment="Center"/>
+
+            <TextBlock Text="Пол"/>
+            <ComboBox ItemsSource="{Binding AllGender}"
+                      DisplayMemberPath="Titl"
+                      SelectedItem="{Binding SelectedGender}"/>
+
+            <TextBlock Text="Дата рождения"/>
+            <DatePicker x:Name="DateOfBirthBlock" 
+                        SelectedDate="{Binding DateOfBirth}" 
+                        IsDropDownOpen="True" 
+                        SelectedDateFormat="Short" 
+                        BorderBrush="Black"/>
+
+            <TextBlock Text="ПОЛИС"/>
+            <TextBox x:Name="PolicyBlock"
+                     Text="{Binding Policy}"
+                     BorderBrush="Black"
+                     VerticalAlignment="Center"/>
+
+            <TextBlock Text="СНИЛС"/>
+            <TextBox x:Name="SnilsBlock"
+                     Text="{Binding Snils}"
+                     BorderBrush="Black"
+                     VerticalAlignment="Center"/>
+
+            <TextBlock Text="Серия паспорта"/>
+            <TextBox x:Name="PassportSeriesBlock"
+                     Text="{Binding PassportSeries}"
+                     BorderBrush="Black"
+                     VerticalAlignment="Center"/>
+
+            <TextBlock Text="Номер паспорта"/>
+            <TextBox x:Name="PassportNumberBlock"
+                     Text="{Binding PassportNumber}"
+                     BorderBrush="Black"
+                     VerticalAlignment="Center"/>
+
+            <TextBlock Text="Место прописки"/>
+            <TextBox x:Name="AddressBlock"
+                     Text="{Binding Address}"
+                     BorderBrush="Black"
+                     VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <Button Content="Добавить"
+                Grid.Row="1"
+                Margin="5"
+                Command="{Binding AddNewPatient}"
+                CommandParameter="{Binding ElementName=AddNewPatientWnd}"/>
+    </Grid>
+</Window>
